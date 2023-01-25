@@ -1,3 +1,5 @@
+//import {useState} from React;
+
 function App() {
   return(
     <div>
@@ -54,6 +56,7 @@ class Clock extends React.Component {
   }
 
   function startDate(){
+    //const [date, showDate] = useState(0);
     const dates = new Date();
     let da = dates.getUTCDay();
     let yr = dates.getFullYear();
@@ -66,6 +69,7 @@ class Clock extends React.Component {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     return(this.showDate.innerHTML = da +", " + yr + "/" + mo + "/" + dy);
+    //alert(da +", " + yr + "/" + mo + "/" + dy);
 }
 
 const root = ReactDOM.createRoot(document.getElementById('App'));
