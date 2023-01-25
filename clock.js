@@ -1,4 +1,4 @@
-//import {useState} from React;
+const {useState} = React;
 
 function App() {
   return(
@@ -56,7 +56,7 @@ class Clock extends React.Component {
   }
 
   function startDate(){
-    //const [date, showDate] = useState(0);
+    const [date, showDate] = useState(0);
     const dates = new Date();
     let da = dates.getUTCDay();
     let yr = dates.getFullYear();
