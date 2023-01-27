@@ -1,12 +1,20 @@
-const {useState} = React;
+const {useState, useRef} = React;
 
 function App() {
   return(
     <div>
+      <Header title='Clock'/>
+      <Header title='Pogi'/>
       <Logo />
       <Clock />
+      <HomePage/>
     </div>
   )
+}
+
+function Header({title}){
+  console.log(title);
+  return <h1>{title}</h1>;
 }
 
 function Logo() {
@@ -46,9 +54,9 @@ class Clock extends React.Component {
           <h1>Hello! It's</h1>
           <h2 ref={this.changeTime}>{this.state.date.toLocaleTimeString()}.</h2>
           <h3 ref={this.showDate}></h3>
-          <button onClick={()=>(alert('24'))}>24 Hours</button>
-          <button onClick={()=>(alert('12'))}>12 Hours</button>
-          <button onClick={()=>(alert('date'))}>Show date</button>
+          <button onClick={()=>(alert(this.state.date.toLocaleTimeString('en-US', {hour12:false})))}>24 Hours</button>
+          <button onClick={()=>(alert(this.state.date.toLocaleTimeString()))}>12 Hours</button>
+          <button onClick={()=>(alert(this.state.date.toLocaleDateString()))}>Show date</button>
           <button onClick={()=>startDate()}>Sample</button>
         </div>
       );
@@ -70,6 +78,22 @@ class Clock extends React.Component {
 
     return(this.showDate.innerHTML = da +", " + yr + "/" + mo + "/" + dy);
     //alert(da +", " + yr + "/" + mo + "/" + dy);
+}
+
+function HomePage() {
+  // ...
+  const [likes, setLikes] = React.useState(0);
+
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+
+  return (
+    <div>
+      {/* ... */}
+      <button onClick={handleClick}>Likes ({likes})</button>
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('App'));
